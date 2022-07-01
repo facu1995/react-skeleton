@@ -1,0 +1,9 @@
+export type {{properCase reducerName}}Action =
+    | { type: 'increaseBy',payload: { value: number } }
+    | { type: 'reset' };
+
+export const doReset = (): {{properCase reducerName}}Action => ({
+    type: 'reset'
+})
+
+export const doIncrement = (value:number): {{properCase reducerName}}Action => ({ type: 'increaseBy', payload: { value } })
