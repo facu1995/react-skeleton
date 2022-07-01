@@ -4,9 +4,9 @@ import { {{properCase reducerName}}Action } from '../actions/actions';
 export const {{lowerCase reducerName}}Reducer = (state: {{properCase reducerName}}State, action: {{properCase reducerName}}Action): {{properCase reducerName}}State => {
     switch (action.type) {
         case 'increaseBy':
-            return { {{lowerCase reducerName}}: state.{{lowerCase reducerName}} + action.payload.value, previous: state.{{lowerCase reducerName}}, changes: action.payload.value }
+            return { {{lowerCase reducerName}}: state.{{lowerCase reducerName}} + action.payload.value }
         case 'reset':
-            return { {{lowerCase reducerName}}: 0, previous: 0, changes: 0 }
+            return { {{lowerCase reducerName}}: 0 }
         default:
             return state;
     }

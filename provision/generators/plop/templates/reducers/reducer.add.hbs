@@ -2,15 +2,14 @@ import { useReducer } from "react"
 import * as actions from "./actions/actions";
 import { {{properCase reducerName}}State } from "./interfaces/interfaces"
 import { {{lowerCase reducerName}}Reducer } from "./state/{{lowerCase reducerName}}Reducer";
+import "./style/style.css"
 
 const INITIAL_STATE:{{properCase reducerName}}State = {
-    {{lowerCase reducerName}}: 10,
-    previous: 15,
-    changes: 20
+    {{lowerCase reducerName}}: 0
 }
 
 export const {{properCase reducerName}}ReducerComponent = () => {
-    const [{{lowerCase reducerName}}State, dispatch] = useReducer({{lowerCase reducerName}}Reducer, INITIAL_STATE);
+    const [{{lowerCase reducerName}}, dispatch] = useReducer({{lowerCase reducerName}}Reducer, INITIAL_STATE);
 
     const increaseBy = (value: number) => {
         dispatch(actions.doIncrement(value));
@@ -19,9 +18,14 @@ export const {{properCase reducerName}}ReducerComponent = () => {
         dispatch(actions.doReset());
     }
     return (
-        <><div>
-            <h1>{{properCase reducerName}} Reducer</h1>
-        </div>
+        <>
+            <div className="{{lowerCase reducerName}}ReducerComponent">
+                <h1>{{properCase reducerName}} Reducer</h1>
+                <p> {JSON.stringify({{lowerCase reducerName}}, null, 2)}</p>
+                <button onClick={()=>increaseBy(1)}>+1</button>
+                <button onClick={()=>increaseBy(5)}>+5</button>
+                <button onClick={handleReset}>reset</button>
+            </div>
         </>
     )
 }
