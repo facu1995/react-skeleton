@@ -22,6 +22,7 @@ export const reducerGenerator: PlopGeneratorConfig = {
     const reducerPath = path.join(reducerGeneratorPath, `${utils.toTitleCase(answers.reducerName)}Reducer`)
     const actionsPath = path.join(reducerPath, 'actions')
     const statePath = path.join(reducerPath, 'state')
+    const stylePath = path.join(reducerPath, 'style')
     const interfacesPath = path.join(reducerPath, 'interfaces')
 
     if (utils.pathExists(reducerPath)) {
@@ -38,7 +39,7 @@ export const reducerGenerator: PlopGeneratorConfig = {
     actions.push({
       type: 'add',
       templateFile: `${reducerTemplatePath}/reducer.add.hbs`,
-      path: `${reducerPath}/${utils.toTitleCase(answers.reducerName)}ReducerComponent.ts`,
+      path: `${reducerPath}/${utils.toTitleCase(answers.reducerName)}ReducerComponent.tsx`,
       abortOnFail: false
     })
 
@@ -46,6 +47,13 @@ export const reducerGenerator: PlopGeneratorConfig = {
       type: 'add',
       templateFile: `${reducerTemplatePath}/state.add.hbs`,
       path: `${statePath}/${utils.toLowerCase(answers.reducerName)}Reducer.ts`,
+      abortOnFail: true
+    })
+
+    actions.push({
+      type: 'add',
+      templateFile: `${reducerTemplatePath}/style.add.hbs`,
+      path: `${stylePath}/style.css`,
       abortOnFail: true
     })
 
