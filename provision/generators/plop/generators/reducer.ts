@@ -1,10 +1,10 @@
 import { Actions, PlopGeneratorConfig } from 'node-plop'
 import * as path from 'path'
-import { pathExists, baseGeneratorPath, baseTemplatesPath, pathMake, toLowerCase, toTitleCase } from '../utils'
+import * as utils from '../utils'
 import { ReducerPromptNames, Answers } from './entities'
 
-const reducerGeneratorPath = path.join(baseGeneratorPath, 'src', 'components')
-const reducerTemplatePath = path.join(baseTemplatesPath, 'reducers')
+const reducerGeneratorPath = path.join(utils.baseGeneratorPath, 'src', 'components')
+const reducerTemplatePath = path.join(utils.baseTemplatesPath, 'reducers')
 
 export const reducerGenerator: PlopGeneratorConfig = {
   description: 'add an reducer',
@@ -19,33 +19,33 @@ export const reducerGenerator: PlopGeneratorConfig = {
   actions: (data) => {
     const answers = data as Answers
 
-    const reducerPath = path.join(reducerGeneratorPath, `${toTitleCase(answers.reducerName)}Reducer`)
+    const reducerPath = path.join(reducerGeneratorPath, `${utils.toTitleCase(answers.reducerName)}Reducer`)
     const actionsPath = path.join(reducerPath, 'actions')
     const statePath = path.join(reducerPath, 'state')
     const interfacesPath = path.join(reducerPath, 'interfaces')
 
-    if (pathExists(reducerPath)) {
+    if (utils.pathExists(reducerPath)) {
       throw new Error(`reducer name '${answers.reducerName}' exists in '${reducerPath}' `)
     }
 
-    pathMake(reducerPath)
-    pathMake(actionsPath)
-    pathMake(statePath)
-    pathMake(interfacesPath)
+    utils.pathMake(reducerPath)
+    utils.pathMake(actionsPath)
+    utils.pathMake(statePath)
+    utils.pathMake(interfacesPath)
 
     const actions: Actions = []
 
     actions.push({
       type: 'add',
       templateFile: `${reducerTemplatePath}/reducer.add.hbs`,
-      path: `${reducerPath}/${toTitleCase(answers.reducerName)}ReducerComponent.ts`,
+      path: `${reducerPath}/${utils.toTitleCase(answers.reducerName)}ReducerComponent.ts`,
       abortOnFail: false
     })
 
     actions.push({
       type: 'add',
       templateFile: `${reducerTemplatePath}/state.add.hbs`,
-      path: `${statePath}/${toLowerCase(answers.reducerName)}Reducer.ts`,
+      path: `${statePath}/${utils.toLowerCase(answers.reducerName)}Reducer.ts`,
       abortOnFail: true
     })
 
