@@ -1,10 +1,10 @@
 import { Actions, PlopGeneratorConfig } from 'node-plop'
 import * as path from 'path'
-import { pathExists, baseGeneratorPath, baseTemplatesPath, pathMake } from '../utils'
+import { pathExists, baseGeneratorPath, baseTemplatesPath, pathMake, toLowerCase, toTitleCase } from '../utils'
 import { ReducerPromptNames, Answers } from './entities'
 
 const reducerGeneratorPath = path.join(baseGeneratorPath, 'src', 'components')
-const reducerTemplatePath = path.join(baseTemplatesPath, 'reducer')
+const reducerTemplatePath = path.join(baseTemplatesPath, 'reducers')
 
 export const reducerGenerator: PlopGeneratorConfig = {
   description: 'add an reducer',
@@ -19,7 +19,7 @@ export const reducerGenerator: PlopGeneratorConfig = {
   actions: (data) => {
     const answers = data as Answers
 
-    const reducerPath = path.join(reducerGeneratorPath, `${answers.reducerName}Reducer`)
+    const reducerPath = path.join(reducerGeneratorPath, `${toTitleCase(answers.reducerName)}Reducer`)
     const actionsPath = path.join(reducerPath, 'actions')
     const statePath = path.join(reducerPath, 'state')
     const interfacesPath = path.join(reducerPath, 'interfaces')
@@ -28,6 +28,7 @@ export const reducerGenerator: PlopGeneratorConfig = {
       throw new Error(`reducer name '${answers.reducerName}' exists in '${reducerPath}' `)
     }
 
+    pathMake(reducerPath)
     pathMake(actionsPath)
     pathMake(statePath)
     pathMake(interfacesPath)
@@ -37,14 +38,14 @@ export const reducerGenerator: PlopGeneratorConfig = {
     actions.push({
       type: 'add',
       templateFile: `${reducerTemplatePath}/reducer.add.hbs`,
-      path: `${reducerPath}/${answers.reducerName}ReducerComponent.ts`,
+      path: `${reducerPath}/${toTitleCase(answers.reducerName)}ReducerComponent.ts`,
       abortOnFail: false
     })
 
     actions.push({
       type: 'add',
       templateFile: `${reducerTemplatePath}/state.add.hbs`,
-      path: `${statePath}/${answers.reducerName}Reducer.ts`,
+      path: `${statePath}/${toLowerCase(answers.reducerName)}Reducer.ts`,
       abortOnFail: true
     })
 

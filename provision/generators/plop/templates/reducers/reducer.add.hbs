@@ -19,7 +19,7 @@ export const {{properCase reducerName}}ReducerComponent = () => {
         dispatch(actions.doReset());
     }
     return (
-        <><div style={{ width: '500px', margin: '40px auto' }}>
+        <><div>
             <h1>{{properCase reducerName}} Reducer</h1>
             <pre> {JSON.stringify({{lowerCase reducerName}}State, null, 2)}</pre>
             <button onClick={()=>increaseBy(1)}>+1</button>
