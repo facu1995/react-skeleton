@@ -1,0 +1,27 @@
+import { useReducer } from "react"
+import * as actions from "./actions/actions";
+import { {{properCase reducerName}}State } from "./interfaces/interfaces"
+import { {{lowerCase reducerName}}Reducer } from "./state/{{lowerCase reducerName}}Reducer";
+
+const INITIAL_STATE:{{properCase reducerName}}State = {
+    {{lowerCase reducerName}}: 10,
+    previous: 15,
+    changes: 20
+}
+
+export const {{properCase reducerName}}ReducerComponent = () => {
+    const [{{lowerCase reducerName}}State, dispatch] = useReducer({{lowerCase reducerName}}Reducer, INITIAL_STATE);
+
+    const increaseBy = (value: number) => {
+        dispatch(actions.doIncrement(value));
+    }
+    const handleReset = () => {
+        dispatch(actions.doReset());
+    }
+    return (
+        <><div>
+            <h1>{{properCase reducerName}} Reducer</h1>
+        </div>
+        </>
+    )
+}
