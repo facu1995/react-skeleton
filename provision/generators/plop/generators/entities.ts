@@ -1,5 +1,11 @@
-export enum ReducerPromptNames {
-  'reducerName' = 'reducerName'
+export enum PromptNames {
+  'reducerName' = 'reducerName',
+  'componentName' = 'componentName'
 }
 
-export type Answers = { [P in ReducerPromptNames]: string }
+export type Answers = 
+{ [P in PromptNames]: string } 
+
+
+
+

@@ -1,7 +1,7 @@
 import { Actions, PlopGeneratorConfig } from 'node-plop'
 import * as path from 'path'
 import * as utils from '../utils'
-import { ReducerPromptNames, Answers } from './entities'
+import { PromptNames, Answers } from './entities'
 
 const reducerGeneratorPath = path.join(utils.baseGeneratorPath, 'src', 'components')
 const reducerTemplatePath = path.join(utils.baseTemplatesPath, 'reducers')
@@ -11,7 +11,7 @@ export const reducerGenerator: PlopGeneratorConfig = {
   prompts: [
     {
       type: 'input',
-      name: ReducerPromptNames.reducerName,
+      name: PromptNames.reducerName,
       message: 'What should it be name reducer called?',
       default: 'counter'
     }
@@ -32,6 +32,7 @@ export const reducerGenerator: PlopGeneratorConfig = {
     utils.pathMake(reducerPath)
     utils.pathMake(actionsPath)
     utils.pathMake(statePath)
+    utils.pathMake(stylePath)
     utils.pathMake(interfacesPath)
 
     const actions: Actions = []
