@@ -59,7 +59,7 @@ export const componentGenerator: PlopGeneratorConfig = {
     actions.push({
       type: 'add',
       templateFile: `${componentTemplatePath}/test.add.hbs`,
-      path: `${stylePath}/test.tsx`,
+      path: `${testPath}/test.tsx`,
       abortOnFail: true
     })
 

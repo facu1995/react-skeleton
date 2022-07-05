@@ -9,7 +9,7 @@ interface PrettifyCustomActionData {
 export default function plop(plop: NodePlopAPI) {
   plop.setHelper('eq', helpers().eq)
   plop.setGenerator('component', componentGenerator)
-//  plop.setGenerator('reducer', reducerGenerator)
+  plop.setGenerator('reducer', reducerGenerator)
   plop.setActionType('prettify', (_, config) => {
     const data = config?.data as PrettifyCustomActionData
     shell.exec(`yarn prettier:fix -- "${data.path}"`, { silent: true })
