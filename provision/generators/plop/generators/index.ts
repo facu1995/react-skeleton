@@ -1,2 +1,6 @@
 import { reducerGenerator } from './reducer'
-export { reducerGenerator }
+import { componentGenerator } from './component'
+
+
+export { reducerGenerator,componentGenerator }
+
