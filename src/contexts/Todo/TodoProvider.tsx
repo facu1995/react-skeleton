@@ -1,7 +1,8 @@
-import { TodoState } from "../components/Todo/interfaces";
 import { TodoContext } from "./TodoContext";
 import { useReducer } from 'react';
-import { todoReducer } from "../components/Todo/todoReducer";
+import * as actions from "../../components/Todo/actions/actions"
+import { todoReducer } from "../../components/Todo/state/todoReducer";
+import { TodoState, Todo } from '../../components/Todo/interfaces/interfaces';
 
 const INITIAL_STATE: TodoState = {
     todoCount: 2,
@@ -26,16 +27,25 @@ interface Props {
 }
 
 export const TodoProvider = ({ children }: Props) => {
-
     const [todoState, dispatch] = useReducer(todoReducer, INITIAL_STATE);
 
-    const toggleTodo = (id: string) => {
-        dispatch({ type: "toggleTodo", payload: { id } })
+    const addTodo = (todo: Todo) => {
+        const {id, desc, completed} =todo;
+        dispatch(actions.doAddTodo(id, desc, completed));
+    }
+    const handleReset = () => {
+        dispatch(actions.doReset());
+    }
+
+    const doToggleTodo = (id:string) => {
+        dispatch(actions.doToggleTodo(id));
     }
     return (
         <TodoContext.Provider value={{
             todoState,
-            toggleTodo
+            handleReset,
+            addTodo,
+            doToggleTodo
         }}>
             {children}
         </TodoContext.Provider>

@@ -1,12 +1,15 @@
-import { TodoProvider } from '../../contexts/TodoProvider';
-import { TodoList } from './TodoList';
-import { Title } from './Title';
+import { Title } from './presentational/TodoTitle';
+import { TodoProvider } from '../../contexts/Todo/TodoProvider';
+import { TodoList } from './presentational/TodoList';
+import style from './style/Todo.module.css';
 
 export const Todo = () => {
     return (
-        <TodoProvider>
-            <Title/>
-            <TodoList></TodoList>
-        </TodoProvider>
+        <div className={style.todo}>
+            <TodoProvider>
+                <Title />
+                <TodoList></TodoList>
+            </TodoProvider>
+        </div>
     )
 }
