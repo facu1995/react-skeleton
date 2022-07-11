@@ -1,0 +1,27 @@
+import { useState } from "react"
+import { use{{properCase componentName}}s } from "../../../hooks/use{{properCase componentName}}s";
+
+export const {{properCase componentName}}Add = () => {
+    const [descAdd, setDescAdd] = useState("");
+    const { add{{properCase componentName}} } = use{{properCase componentName}}s();
+
+    const handleDesc = (evt: React.ChangeEvent<HTMLInputElement>) => {
+        setDescAdd(evt.target.value);
+    }
+
+    const agregar = () => {
+        add{{properCase componentName}}(descAdd);
+        setDescAdd("");
+    }
+
+    return (
+        <div>
+            <h4>Agregar {{properCase componentName}}</h4>
+            <input
+                value={descAdd} onChange={handleDesc}
+                placeholder="Descripcion">
+            </input>
+            <button onClick={agregar}>Agregar</button>
+        </div>
+    )
+}

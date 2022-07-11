@@ -1,6 +1,6 @@
 export enum PromptNames {
   'reducerName' = 'reducerName',
-  'componentName' = 'componentName'
+  'componentName' = 'componentName',
 }
 
 export type Answers = 

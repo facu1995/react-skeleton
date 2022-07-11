@@ -3,10 +3,14 @@ import { TodoItem } from './TodoItem';
 
 export const TodoList = () => {
 
-    const {todos}=useTodos();
+    const { todos } = useTodos();
     return (
         <ul>
-            {todos.map(todo=><TodoItem key={todo.id} todo={todo}/>)}
+            {todos.map(todo => {
+                const { id } = todo;
+                return (
+                    <TodoItem key={id} todo={todo} />)
+            })}
         </ul>
     )
 }

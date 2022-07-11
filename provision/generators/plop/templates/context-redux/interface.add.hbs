@@ -1,0 +1,12 @@
+export interface {{properCase componentName}}State {
+    {{lowerCase componentName}}Count: number;
+    {{lowerCase componentName}}s: {{properCase componentName}}[];
+    completed: number;
+    pending: number;
+}
+
+export interface {{properCase componentName}} {
+    id: string,
+    desc: string;
+    completed: boolean;
+}

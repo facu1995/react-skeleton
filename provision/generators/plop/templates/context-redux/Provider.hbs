@@ -1,0 +1,57 @@
+import { {{props componentName}}Context } from "./{{props componentName}}Context";
+import { useReducer } from 'react';
+import * as actions from "../../components/{{props componentName}}/actions/actions"
+import { {{props componentName}}Reducer } from "../../components/{{props componentName}}/state/{{props componentName}}Reducer";
+import { {{props componentName}}State } from '../../components/{{props componentName}}/interfaces/interfaces';
+
+const INITIAL_STATE: {{props componentName}}State = {
+    {{props componentName}}Count: 2,
+    {{props componentName}}s: [
+        {
+            id: "1",
+            desc: "Recolectar las piedras del infinito",
+            completed: false
+        },
+        {
+            id: "2",
+            desc: "Piedra del alma",
+            completed: false
+        }
+    ],
+    completed: 0,
+    pending: 2
+}
+
+interface Props {
+    children: JSX.Element | JSX.Element[]
+}
+
+export const {{props componentName}}Provider = ({ children }: Props) => {
+    const [{{props componentName}}State, dispatch] = useReducer({{props componentName}}Reducer, INITIAL_STATE);
+
+    const add{{props componentName}} = (desc:string) => {
+        dispatch(actions.doAdd{{props componentName}}(""+({{props componentName}}State.{{props componentName}}s.length+1), desc, false));
+    }
+    const handleReset = () => {
+        dispatch(actions.doReset());
+    }
+
+    const doToggle{{props componentName}} = (id:string) => {
+        dispatch(actions.doToggle{{props componentName}}(id));
+    }
+
+    const doDelet{{props componentName}} = (id:string) => {
+        dispatch(actions.doDelet{{props componentName}}(id));
+    }
+    return (
+        <{{props componentName}}Context.Provider value={{
+            {{props componentName}}State,
+            handleReset,
+            add{{props componentName}},
+            doToggle{{props componentName}},
+            doDelet{{props componentName}}
+        }}>
+            {children}
+        </{{props componentName}}Context.Provider>
+    )
+}

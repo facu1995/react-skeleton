@@ -1,19 +1,21 @@
 import { useTodos } from "../../../hooks/useTodos";
-import { Todo } from "../interfaces/interfaces";
-
-interface Props {
-    todo: Todo
+import { Todo } from '../interfaces/interfaces';
+import style from '../style/TodoItem.module.css'
+interface props{
+    todo:Todo
 }
 
-export const TodoItem = ({ todo }: Props) => {
-    const{doToggleTodo}= useTodos();
+export const TodoItem = ({todo}:props) => {
+    const { doToggleTodo } = useTodos();
+    const {id,desc, completed}=todo;
+    
+    const toggleTodo = (id: string) => {
+        doToggleTodo(id);
+    }
+
     return (
-        <li style={{
-            cursor: 'pointer',
-            textDecoration:todo.completed? 'line-through': ''
-        }} 
-        onClick={()=>doToggleTodo(todo.id)}>
-            {todo.desc}
-        </li>
+    <li className={`${style.todoItem} ${completed&& style.tachar}`} onClick={()=>toggleTodo(id)}>
+        {desc}
+    </li>
     )
 }

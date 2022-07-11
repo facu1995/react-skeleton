@@ -6,14 +6,16 @@ export const useTodos = () => {
     const { todoState,
         handleReset,
         addTodo,
-        doToggleTodo } = useContext(TodoContext);
+        doToggleTodo,doDeletTodo } = useContext(TodoContext);
 
 
     return {
         todos: todoState.todos,
-        doToggleTodo,
+        doToggleTodo,   
         addTodo,
         handleReset,
-        pendingTodos: todoState.todos.filter(todo => !todo.completed).length
+        doDeletTodo,
+        pendingTodos: todoState.todos.filter(todo => !todo.completed).length,
+        cant:todoState.todos.length
     }
 }

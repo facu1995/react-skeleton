@@ -1,6 +1,6 @@
 import { NodePlopAPI } from 'node-plop'
 import helpers from 'handlebars-helpers'
-import { reducerGenerator, componentGenerator } from './generators'
+import { reducerGenerator, componentGenerator,contextReduxGenerator } from './generators'
 import shell from 'shelljs'
 
 interface PrettifyCustomActionData {
@@ -10,6 +10,7 @@ export default function plop(plop: NodePlopAPI) {
   plop.setHelper('eq', helpers().eq)
   plop.setGenerator('component', componentGenerator)
   plop.setGenerator('reducer', reducerGenerator)
+  plop.setGenerator('context-redux', contextReduxGenerator)
   plop.setActionType('prettify', (_, config) => {
     const data = config?.data as PrettifyCustomActionData
     shell.exec(`yarn prettier:fix -- "${data.path}"`, { silent: true })

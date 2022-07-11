@@ -1,0 +1,28 @@
+import { {{properCase componentName}} } from "../interfaces/interfaces";
+
+
+export enum typeAction{
+    'add{{properCase componentName}}' = 'add{{properCase componentName}}',
+    'toggle{{properCase componentName}}' = 'toggle{{properCase componentName}}',
+    'reset{{properCase componentName}}' = 'reset{{properCase componentName}}',
+    'delet{{properCase componentName}}' = 'delet{{properCase componentName}}'
+}
+
+export type {{properCase componentName}}Action =
+    | { type: typeAction.add{{properCase componentName}}, payload: {{properCase componentName}} }
+    | { type: typeAction.reset{{properCase componentName}} }
+    | { type: typeAction.toggle{{properCase componentName}}, payload: { id: string } }
+    | { type: typeAction.delet{{properCase componentName}}, payload: { id: string } };
+
+export const doReset = (): {{properCase componentName}}Action => ({
+    type: typeAction.reset{{properCase componentName}}
+})
+
+export const doToggle{{properCase componentName}} = (id: string): {{properCase componentName}}Action =>
+    ({ type: typeAction.toggle{{properCase componentName}}, payload: { id } })
+
+export const doAdd{{properCase componentName}} = (id: string, desc: string, completed: boolean): {{properCase componentName}}Action =>
+    ({ type: typeAction.add{{properCase componentName}}, payload: { id, desc, completed } })
+
+export const doDelet{{properCase componentName}} = (id: string): {{properCase componentName}}Action =>
+    ({ type: typeAction.delet{{properCase componentName}}, payload: { id } })

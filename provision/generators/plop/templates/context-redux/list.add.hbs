@@ -1,0 +1,17 @@
+import { use{{properCase componentName}}s } from "../../../hooks/use{{properCase componentName}}s";
+import { {{properCase componentName}}Item } from './{{properCase componentName}}Item';
+
+export const {{properCase componentName}}List = () => {
+
+    const { {{lowerCase componentName}}s,cantTodos } = use{{properCase componentName}}s();
+    const {{lowerCase componentName}}s=list;
+    return (
+        <ul>
+            {list.map({{lowerCase componentName}} => {
+                const { id } = {{lowerCase componentName}};
+                return (
+                    <{{properCase componentName}}Item key={id} {{lowerCase componentName}} ={ {{lowerCase componentName}} } />)
+            })}
+        </ul>
+    )
+}

@@ -1,0 +1,17 @@
+import { {{properCase componentName}}Title } from './presentational/{{properCase componentName}}Title';
+import { {{properCase componentName}}Provider } from '../../contexts/{{properCase componentName}}/{{properCase componentName}}Provider';
+import { {{properCase componentName}}List } from './presentational/{{properCase componentName}}List';
+import style from './style/{{properCase componentName}}.module.css';
+import { {{properCase componentName}}Add } from './presentational/{{properCase componentName}}Add';
+
+export const {{properCase componentName}} = () => {
+    return (
+        <div className={style.todo}>
+            <{{properCase componentName}}Provider>
+                <{{properCase componentName}}Title />
+                <{{properCase componentName}}List></{{properCase componentName}}List>
+                <{{properCase componentName}}Add></{{properCase componentName}}Add>
+            </{{properCase componentName}}Provider>
+        </div>
+    )
+}

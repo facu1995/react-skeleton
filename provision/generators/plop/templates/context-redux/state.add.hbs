@@ -1,0 +1,39 @@
+import { {{properCase componentName}}State } from "../interfaces/interfaces";
+import { {{properCase componentName}}Action,typeAction } from '../actions/actions';
+
+export const {{lowerCase componentName}}Reducer = (state: {{properCase componentName}}State, action: {{properCase componentName}}Action): {{properCase componentName}}State => {
+    switch (action.type) {
+        case typeAction.add{{properCase componentName}}:
+            return {
+                ...state,
+                {{lowerCase componentName}}s: [...state.{{lowerCase componentName}}s, action.payload]
+            }
+        case typeAction.reset{{properCase componentName}}:
+            return {
+                ...state,
+                {{lowerCase componentName}}s: []
+            }
+        case typeAction.toggle{{properCase componentName}}:
+            return {
+                ...state,
+                {{lowerCase componentName}}s: state.{{lowerCase componentName}}s.map(({ ...todo }) => {
+                    if (todo.id === action.payload.id) {
+                        todo.completed = !todo.completed;
+                    }
+                    return todo
+                })
+            }
+        case typeAction.delet{{properCase componentName}}:
+            return {
+                ...state,
+                {{lowerCase componentName}}s: state.{{lowerCase componentName}}s.filter(({ ...todo }) => {
+                    if (todo.id === action.payload.id)
+                        return null;
+                    else
+                        return todo
+                })
+            }
+        default:
+            return state;
+    }
+}

@@ -1,0 +1,20 @@
+import { {{properCase componentName}}Context } from '../contexts/{{properCase componentName}}/{{properCase componentName}}Context';
+import { useContext } from 'react';
+
+export const use{{properCase componentName}}s = () => {
+
+    const { {{lowerCase componentName}}State,
+        handleReset,
+        add{{properCase componentName}},
+        doToggle{{properCase componentName}},doDelet{{properCase componentName}} } = useContext({{properCase componentName}}Context);
+
+
+    return {
+        {{lowerCase componentName}}s: {{lowerCase componentName}}State.{{lowerCase componentName}}s,
+        doToggle{{properCase componentName}},
+        add{{properCase componentName}},
+        handleReset,
+        doDelet{{properCase componentName}},
+        pending{{properCase componentName}}s: {{lowerCase componentName}}State.{{lowerCase componentName}}s.filter({{lowerCase componentName}} => !{{lowerCase componentName}}.completed).length
+    }
+}

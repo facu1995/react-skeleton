@@ -1,0 +1,7 @@
+.todoItem{
+    cursor:pointer;
+}
+
+.tachar{
+    text-decoration: line-through;
+}

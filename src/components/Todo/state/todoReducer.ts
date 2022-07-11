@@ -1,6 +1,5 @@
-
-import { TodoState } from '../interfaces/interfaces';
-import { TodoAction ,typeAction} from '../actions/actions';
+import { TodoState } from "../interfaces/interfaces";
+import { TodoAction,typeAction } from '../actions/actions';
 
 export const todoReducer = (state: TodoState, action: TodoAction): TodoState => {
     switch (action.type) {
@@ -22,6 +21,16 @@ export const todoReducer = (state: TodoState, action: TodoAction): TodoState => 
                         todo.completed = !todo.completed;
                     }
                     return todo
+                })
+            }
+        case typeAction.deletTodo:
+            return {
+                ...state,
+                todos: state.todos.filter(({ ...todo }) => {
+                    if (todo.id === action.payload.id)
+                        return null;
+                    else
+                        return todo
                 })
             }
         default:

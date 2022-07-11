@@ -1,0 +1,21 @@
+import { use{{properCase componentName}}s } from "../../../hooks/use{{properCase componentName}}s";
+import { {{properCase componentName}} } from '../interfaces/interfaces';
+import style from '../style/{{properCase componentName}}Item.module.css'
+interface props{
+    {{lowerCase componentName}}:{{properCase componentName}}
+}
+
+export const {{properCase componentName}}Item = ({{{lowerCase componentName}}}:props) => {
+    const { doToggle{{properCase componentName}} } = use{{properCase componentName}}s();
+    const {id,desc, completed}={{lowerCase componentName}};
+    
+    const toggle{{properCase componentName}} = (id: string) => {
+        doToggle{{properCase componentName}}(id);
+    }
+
+    return (
+    <li className={`${style.{{lowerCase componentName}}Item} ${completed&& style.tachar}`} onClick={()=>toggle{{properCase componentName}}(id)}>
+        {desc}
+    </li>
+    )
+}

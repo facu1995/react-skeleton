@@ -1,11 +1,11 @@
 import { {{properCase reducerName}}State } from "../interfaces/interfaces";
-import { {{properCase reducerName}}Action } from '../actions/actions';
+import { {{properCase reducerName}}Action,typeAction } from '../actions/actions';
 
 export const {{lowerCase reducerName}}Reducer = (state: {{properCase reducerName}}State, action: {{properCase reducerName}}Action): {{properCase reducerName}}State => {
     switch (action.type) {
-        case 'increaseBy':
+        case typeAction.increaseBy:
             return { {{lowerCase reducerName}}: state.{{lowerCase reducerName}} + action.payload.value }
-        case 'reset':
+        case typeAction.reset:
             return { {{lowerCase reducerName}}: 0 }
         default:
             return state;

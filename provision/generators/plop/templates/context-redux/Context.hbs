@@ -1,0 +1,12 @@
+import {createContext} from "react";
+import { {{const componentName}}State } from "../../components/{{const componentName}}/interfaces/interfaces";
+
+export type {{const componentName}}ContextProps={
+    {{lowerCase componentName}}State:{{const componentName}}State
+    add{{const componentName}}: (description:string) => void
+    handleReset: () => void
+    doToggle{{const componentName}}: (id: string) => void
+    doDelet{{const componentName}}:(id:string) => void
+}
+
+export const {{const componentName}}Context = createContext<{{const componentName}}ContextProps>({} as {{const componentName}}ContextProps);

@@ -1,0 +1,13 @@
+import { use{{properCase componentName}}s } from '../../../hooks/use{{properCase componentName}}s';
+import style from '../style/{{properCase componentName}}Title.module.css'
+
+export const {{properCase componentName}}Title = () => {
+    const { {{lowerCase componentName}}s, pending{{properCase componentName}}s ,cant} = use{{properCase componentName}}s();
+
+    return (
+        <div className={style.header}>
+            <h1>{{properCase componentName}}s: {cant}</h1>
+            <h3>Pendientes: {pending{{properCase componentName}}s}</h3>
+        </div>
+    )
+}
